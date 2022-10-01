@@ -1,4 +1,6 @@
 ---
+import Time from './Time.astro';
+
 interface Props {
     articleTitle: string;
     articleUrl: string;
@@ -26,15 +28,7 @@ const recentPost = Date.now() - postedDate.valueOf() < TEN_DAYS;
                 </div>
 
                 <small>
-                    <time class="text-sm font-light font-mono" datetime={postedDate.toISOString()}>
-                        {
-                            postedDate.toLocaleDateString('en-gb', {
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric',
-                            })
-                        }
-                    </time>
+                    <Time datetime={postedDate} />
                 </small>
                 <div class="sm:inline">
                     {tags?.map(tag => <span class="badge mr-1">{tag}</span>)}

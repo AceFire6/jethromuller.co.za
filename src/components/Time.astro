@@ -1,0 +1,18 @@
+---
+interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+    datetime: string | Date;
+}
+
+const { datetime, class: className } = Astro.props;
+
+const parsedDatetime = new Date(datetime);
+const formattedDatetime = parsedDatetime.toLocaleDateString('en-gb', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+});
+---
+
+<time class:list={[className]} datetime={parsedDatetime.toISOString()}>
+    {formattedDatetime}
+</time>

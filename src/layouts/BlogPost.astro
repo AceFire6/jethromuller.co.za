@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import Time from '../components/Time.astro';
 
 export interface Props {
     content: {
@@ -10,45 +11,50 @@ export interface Props {
         pubDate?: string;
         updatedDate?: string;
         heroImage?: string;
+        heroDescription?: string;
     };
 }
 
 const {
-    content: { title, description, pubDate, updatedDate, heroImage },
+    content: { title, description, pubDate, updatedDate, heroImage, heroDescription },
 } = Astro.props;
 ---
 
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <BaseHead title={title} description={description} />
-        <style>
-            .title {
-                font-size: 2em;
-                margin: 0.25em 0 0;
-            }
-            hr {
-                border-top: 1px solid #ddd;
-                margin: 1rem 0;
-            }
-        </style>
     </head>
 
     <body>
         <Header />
-        <main>
-            <article>
-                {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
-                <h1 class="title">{title}</h1>
-                {pubDate && <time>{pubDate}</time>}
+        <main class="pt-2 pb-2 min-h-[78vh] bg-base-200">
+            <article class="prose prose-hr:mt-4 prose-hr:mb-4 mx-auto bg-base-100 pb-4">
                 {
-                    updatedDate && (
-                        <div>
-                            Last updated on <time>{updatedDate}</time>
-                        </div>
+                    heroImage && (
+                        <img
+                            height={360}
+                            class="w-full"
+                            src={heroImage}
+                            alt={heroDescription ?? ''}
+                        />
                     )
                 }
-                <hr />
-                <slot />
+                <div class="pl-6 pr-6">
+                    <h1>{title}</h1>
+
+                    {pubDate && <Time datetime={pubDate} class="font-mono" />}
+
+                    {
+                        updatedDate && (
+                            <div>
+                                Last updated on <Time datetime={updatedDate} />
+                            </div>
+                        )
+                    }
+                    <hr />
+                    <slot />
+                </div>
             </article>
         </main>
         <Footer />
