@@ -1,0 +1,19 @@
+---
+import { Icon } from 'astro-icon';
+
+interface Props {
+    linkClass?: string;
+    iconClass?: string;
+}
+
+const { linkClass, iconClass } = Astro.props;
+const extraLinkClasses: string = linkClass ?? '';
+const linkClasses = ['no-underline', extraLinkClasses].join(' ');
+
+const extraIconClasses: string = iconClass ?? '';
+const iconClasses = ['inline-flex', 'h-10', extraIconClasses].join(' ');
+---
+
+<a href="https://github.com/AceFire6" target="_blank" title="Github" class={linkClasses}>
+    <Icon name="fa-brands:github" class={iconClasses} />
+</a>

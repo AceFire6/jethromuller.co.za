@@ -1,0 +1,81 @@
+---
+import { Image } from '@astrojs/image/components';
+
+import { SITE_TITLE } from '../config';
+import GithubButton from './GithubButton.astro';
+import HeaderLink from './HeaderLink.astro';
+import LinkedInButton from './LinkedInButton.astro';
+
+const { headerTitle } = Astro.props;
+
+let postsExist = false;
+try {
+    postsExist = (await Astro.glob('../pages/blog/*.{md,mdx}')).length > 0;
+} catch {}
+---
+
+<header class="navbar">
+    <div class="navbar-start">
+        <div class="dropdown">
+            <label tabindex="0" class="btn btn-ghost md:hidden">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    ><path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h8m-8 6h16"></path>
+                </svg>
+            </label>
+            <ul
+                tabindex="0"
+                class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+                <li>
+                    <HeaderLink href="/blog">Blog</HeaderLink>
+                </li>
+                <li><HeaderLink href="/about">About</HeaderLink></li>
+                <li>
+                    <HeaderLink href="https://www.linkedin.com/in/jethro-muller" target="_blank">
+                        LinkedIn
+                    </HeaderLink>
+                </li>
+                <li>
+                    <HeaderLink href="https://github.com/AceFire6" target="_blank">
+                        GitHub
+                    </HeaderLink>
+                </li>
+            </ul>
+        </div>
+
+        <Image
+            src="https://avatars.githubusercontent.com/u/4126778?v=4"
+            alt="Portrait of Jethro"
+            class="hidden h-16 w-16 md:flex rounded-full p-[0.1rem] bg-clip-padding bg-gradient-to-r from-[#D60270] via-[#9B4F96] to-[#0038A8]"
+            width="100%"
+            aspectRatio="1:1"
+        />
+        <HeaderLink class="btn btn-ghost normal-case text-2xl" href="/">
+            {headerTitle ?? SITE_TITLE}
+        </HeaderLink>
+    </div>
+
+    <div class="navbar-end">
+        <ul class="hidden md:flex text-xl menu menu-horizontal p-0">
+            <li class={!postsExist ? 'btn-disabled' : undefined}>
+                <HeaderLink href="/blog">Blog</HeaderLink>
+            </li>
+            <li><HeaderLink href="/about">About</HeaderLink></li>
+            <li>
+                <LinkedInButton />
+            </li>
+            <li>
+                <GithubButton />
+            </li>
+        </ul>
+    </div>
+</header>

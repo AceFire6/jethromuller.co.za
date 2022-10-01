@@ -1,0 +1,53 @@
+---
+interface Props {
+    articleTitle: string;
+    articleUrl: string;
+    postedDate: Date;
+    shortDescription?: string;
+    tags?: string[];
+}
+
+const second = 1000;
+const minute = second * 60;
+const hour = minute * 60;
+const day = hour * 24;
+
+const TEN_DAYS = 10 * day;
+
+const { articleTitle, articleUrl, postedDate, shortDescription, tags } = Astro.props;
+const recentPost = Date.now() - postedDate.valueOf() < TEN_DAYS;
+---
+
+<div class="mt-2 p-4 bg-base-300 rounded-xl">
+    <a href={articleUrl} title={articleTitle}>
+            <div>
+                <div>
+                    <p class="text-xl font-bold">{articleTitle} {recentPost ? <span class="badge badge-primary">NEW</span> : undefined}</p>
+                </div>
+
+                <small>
+                    <time class="text-sm font-light font-mono" datetime={postedDate.toISOString()}>
+                        {
+                            postedDate.toLocaleDateString('en-gb', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                            })
+                        }
+                    </time>
+                </small>
+                <div class="sm:inline">
+                    {tags?.map(tag => <span class="badge mr-1">{tag}</span>)}
+                </div>
+
+                {
+                    shortDescription ? (
+                        <div class="divider mt-1 mb-1"></div>
+                        <div>
+                            <p class="mt-1">{shortDescription}</p>
+                        </div>
+                    ) : undefined
+                }
+            </div>
+    </a>
+</div>
