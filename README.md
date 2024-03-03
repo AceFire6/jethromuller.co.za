@@ -1,5 +1,8 @@
 # [jethromuller.co.za](https://jethromuller.co.za)
 
+[![ESLint](https://github.com/AceFire6/jethromuller.co.za/actions/workflows/lint-eslint.yml/badge.svg)](https://github.com/AceFire6/jethromuller.co.za/actions/workflows/lint-eslint.yml)
+[![Astro Check](https://github.com/AceFire6/jethromuller.co.za/actions/workflows/lint-astro.yml/badge.svg)](https://github.com/AceFire6/jethromuller.co.za/actions/workflows/lint-astro.yml)
+
 My personal website built with [Astro](https://astro.build) and TypeScript.
 
 Adapted from the [Astrofy Astro template](https://github.com/manuelernestog/astrofy)
