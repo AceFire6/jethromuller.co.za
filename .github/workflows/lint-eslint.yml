@@ -4,10 +4,11 @@ permissions:
   contents: read
 
 on:
-  pull_request:
+  push:
+    branches: [main]
 
 concurrency:
-  group: pnpm-lint-${{ github.ref }}
+  group: eslint-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
