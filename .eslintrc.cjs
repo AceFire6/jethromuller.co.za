@@ -229,6 +229,8 @@ module.exports = {
         // This rule is good in theory, but it contradicts eslint's consistent-returns
         // and typescripts own value return checks
         'unicorn/no-useless-undefined': 'off',
+        // Seems to cause false positives
+        'astro/jsx-a11y/label-has-associated-control': 'off',
     },
     overrides: [
         {

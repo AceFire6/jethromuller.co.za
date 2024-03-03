@@ -15,13 +15,13 @@ interface Props {
 const { title, heroImgSrc, description, url, badge, tags, target = '_blank' } = Astro.props;
 
 // Annoying requirement to make the Image types happy
-let resolvedImageSrc: string | undefined;
+let resolvedImageSource: string | undefined;
 if (heroImgSrc !== undefined) {
   if (typeof heroImgSrc === 'string') {
-    resolvedImageSrc = heroImgSrc;
+    resolvedImageSource = heroImgSrc;
   } else {
     const imageData = await getImage({ src: heroImgSrc });
-    resolvedImageSrc = imageData.src;
+    resolvedImageSource = imageData.src;
   }
 }
 
@@ -32,9 +32,9 @@ const tagUrl = url.split('/').slice(0, -1).join('/') + '/tag';
   <a href={url} target={target}>
     <div class="hero-content flex-col md:flex-row">
       {
-        resolvedImageSrc && (
+        resolvedImageSource && (
           <Image
-            src={resolvedImageSrc}
+            src={resolvedImageSource}
             width={750}
             height={422}
             format="webp"
