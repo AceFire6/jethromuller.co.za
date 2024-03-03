@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+
+import type { BlogSchema } from '@content/config';
+import PostLayout from '@layouts/PostLayout.astro';
+import {createSlug} from '@lib/create-slug';
+import type {InferGetStaticPropsType} from "astro";
+
+export async function getStaticPaths() {
+  const postEntries = await getCollection('blog');
+
+  return postEntries.map((entry) => ({
+    params: { slug: createSlug(entry.data.title, entry.slug) },
+    props: { entry },
+  }));
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface Props extends InferGetStaticPropsType<typeof getStaticPaths> {}
+
+const { entry } = Astro.props;
+const post: BlogSchema = entry.data;
+const { Content } = await entry.render();
+---
+
+<PostLayout
+  title={post.title}
+  description={post.description}
+  publishedDate={post.publishedDate}
+  heroImage={post.heroImage}
+  updatedDate={post.updatedDate}
+  badge={post.badge}
+  tags={post.tags}
+>
+  <Content />
+</PostLayout>

@@ -1,0 +1,67 @@
+{
+  "name": "jethromuller.co.za",
+  "version": "0.0.1",
+  "private": true,
+  "description": "My personal website",
+  "type": "module",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro check && astro build",
+    "dev": "astro dev",
+    "plop": "NODE_OPTIONS='--import tsx' plop --plopfile ./plop/plopfiile.ts --dest ./",
+    "new-blog-post": "NODE_OPTIONS='--import tsx' plop --plopfile ./plop/blog-post/blog-post-generator.ts --dest ./",
+    "bundle-release": "pnpm run build && tar -cvf website.zip -C ./dist/ .",
+    "preview": "astro preview",
+    "start": "astro dev"
+  },
+  "dependencies": {
+    "@astrojs/check": "0.5.5",
+    "@astrojs/mdx": "2.1.1",
+    "@astrojs/rss": "4.0.5",
+    "@astrojs/sitemap": "3.1.1",
+    "@astrojs/tailwind": "5.1.0",
+    "@formkit/tempo": "0.0.13",
+    "astro": "4.4.4",
+    "daisyui": "4.7.2",
+    "sharp": "0.33.2",
+    "tailwindcss": "3.4.1",
+    "typescript": "5.3.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "8.56.0",
+    "@ianvs/prettier-plugin-sort-imports": "4.1.1",
+    "@tailwindcss/typography": "0.5.10",
+    "@types/eslint": "8.56.3",
+    "@types/node": "20.11.20",
+    "@typescript-eslint/eslint-plugin": "7.0.2",
+    "@typescript-eslint/parser": "7.0.2",
+    "eslint": "8.56.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-import-resolver-typescript": "3.6.1",
+    "eslint-plugin-astro": "0.31.4",
+    "eslint-plugin-diff": "2.0.3",
+    "eslint-plugin-import": "npm:eslint-plugin-i@2.29.1",
+    "eslint-plugin-jsx-a11y": "6.8.0",
+    "eslint-plugin-promise": "6.1.1",
+    "eslint-plugin-unicorn": "51.0.1",
+    "eslint-plugin-you-dont-need-lodash-underscore": "6.13.0",
+    "husky": "9.0.11",
+    "lint-staged": "15.2.2",
+    "plop": "4.0.1",
+    "prettier": "3.2.5",
+    "prettier-plugin-astro": "0.13.0",
+    "prettier-plugin-packagejson": "2.4.12",
+    "tsx": "4.7.1"
+  },
+  "packageManager": "pnpm@8.15.4",
+  "engines": {
+    "node": "20.11.1",
+    "pnpm": ">= 8.15.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
+  }
+}

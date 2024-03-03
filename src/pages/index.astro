@@ -1,0 +1,134 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+import HorizontalCard from '@components/HorizontalCard.astro';
+import { format } from '@formkit/tempo';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { createSlug } from '@lib/create-slug';
+
+import flowerPicture from 'src/images/me-cropped.webp';
+
+const posts = await getCollection('blog');
+
+const latestPosts = posts
+  .sort((a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf())
+  .slice(0, 3);
+
+const experienceYears = new Date().getFullYear() - new Date('2017-01-01').getFullYear();
+---
+
+<BaseLayout sideBarActiveItemId="home">
+  <div class="pb-8 mt-5">
+    <div class="text-xl py-1">Hey there 👋</div>
+    <div class="text-5xl font-bold">Jethro Muller</div>
+    <div class="text-3xl py-3 font-bold">Software Engineer and developer tooling enthusiast</div>
+    <div class="py-2">
+      <p class="text-3xl mb-2 font-bold">Welcome!</p>
+      <p class="text-lg">
+        This is where I host <a href="/blog" class="link">my writing</a>, some of my <a
+          href="#projects"
+          class="link">recent projects</a
+        >, an HTML version of my <a href="/cv" class="link">CV</a>, my <a
+          href="/contact"
+          class="link">contact information</a
+        >, and links to other places you can find me.
+      </p>
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-3xl py-1 font-bold hidden md:block">Who am I?</h2>
+    <div class="hero">
+      <div class="hero-content flex-col lg:flex-row">
+        <Image
+          src={flowerPicture}
+          class="w-44 md:w-64 md:mr-5 rounded-full shadow-2xl p-1 bg-clip-padding bg-gradient-to-r from-[#D60270] via-[#9B4F96] to-[#0038A8]"
+          width={300}
+          height={300}
+          alt="Jethro in a field of wild flowers in Cape Town"
+          loading="eager"
+        />
+        <div>
+          <h2 class="text-3xl py-1 font-bold md:hidden">Who am I?</h2>
+          <div class="text-lg prose">
+            <p>
+              I'm a fullstack developer with a focus on backend development and developer tooling.
+            </p>
+            <p>
+              I have {experienceYears} years of experience building systems in Python and TypeScript.
+              Over my career I've developed a strong passion for robust, performant code and developer
+              tooling.
+            </p>
+            <p>
+              I'm always looking to learn new things and challenge myself. This website has <a
+                href="/blog"
+                class="link">my writing</a
+              > and links to <a href="https://github.com/acefire6" target="_blank"
+                >my Github account</a
+              > where you'll find my latest projects.
+            </p>
+            <p>
+              Outside of work I enjoy rock climbing, SCUBA diving, and hiking the various mountains
+              and trails around Cape Town.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-2" id="projects">Some of my projects 🧑‍💻</div>
+  </div>
+
+  <HorizontalCard
+    title="Arrowverse.info"
+    heroImgSrc="/images/arrowverse-post.webp"
+    description="This is a site I've been maintaining since 2014. I built it during on of my lectures as a way to track any crossover episodes in a set of shows I used to watch. At its peak it had around 100 000 monthly unique active users."
+    url="https://github.com/AceFire6/ordered-arrowverse"
+    badge="Website"
+    tags={['python']}
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="PHX Events"
+    heroImgSrc="/images/phx-events-post.webp"
+    description="PHX Events is a Phoenix Channels websocket client for Python."
+    url="https://github.com/acefire6/phx_events"
+    badge="Library"
+    tags={['python', 'phoenix']}
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="Feature Engineering Aide"
+    heroImgSrc="/images/feature-engineering-aide-post.webp"
+    description={'An automated machine learning testbed with experiments based on data from the University of Cape Town. ' +
+      'This project uses the auto-sklearn package to make the initial exploration of the use of AI ' +
+      'to answer some domain-specific questions easier and more accessible'}
+    url="https://github.com/AceFire6/feature-engineering-aide/"
+    badge="Tool"
+    tags={['AI', 'python', 'auto-sklearn']}
+  />
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-5 mt-10">My latest blog posts ✍️</div>
+  </div>
+
+  {
+    latestPosts.map((post) => (
+      <>
+        <HorizontalCard
+          title={post.data.title}
+          heroImgSrc={post.data.listImage}
+          description={post.data.description}
+          url={'/blog/' + createSlug(post.data.title, post.slug)}
+          target="_self"
+          badge={format(post.data.publishedDate, 'medium')}
+          tags={post.data.tags}
+        />
+        <div class="divider my-0" />
+      </>
+    ))
+  }
+</BaseLayout>

@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import type {AstroBuiltinAttributes} from "astro";
+
+interface Props {
+  title: string;
+  centreTitle?: boolean;
+  classList?: AstroBuiltinAttributes['class:list']
+  img: string;
+  imgFormat?: string;
+  imgEager?: boolean;
+  description?: string;
+  url: string;
+  target?: string;
+  badge?: string;
+  tags?: string[];
+}
+
+const { title, centreTitle = false,  classList, img, imgFormat = "webp", imgEager = false, description, url, badge, tags, target = '_blank' } = Astro.props;
+---
+<div class:list={["w-auto", "h-auto", "md:min-w-60", classList]}>
+  <a href={url} target={target}>
+    <div
+      class="card bg-base-300 transition ease-in-out hover:shadow-xl mx-6 my-2 hover:scale-[102%] h-full"
+    >
+      <Image class="mt-8 mx-auto" width={100} height={100} format={imgFormat} loading={imgEager ? "eager" : undefined} src={img} alt={title} />
+      <div class="card-body">
+        <h2 class:list={["card-title", { "mx-auto": centreTitle }]}>
+          {title}
+          {badge && <div class="badge badge-secondary">{badge}</div>}
+        </h2>
+        {description ? <p>{description}</p> : ''}
+        {tags &&
+          <div class="card-actions justify-end">
+          {tags.map((tag) => <div class="badge badge-outline">{tag}</div>)}
+          </div>}
+      </div>
+    </div>
+  </a>
+</div>

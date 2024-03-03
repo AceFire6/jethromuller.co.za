@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+
+import SideBarFooter from './SideBarFooter.astro';
+import SideBarMenu from './SideBarMenu.astro';
+
+interface Props {
+  sideBarActiveItemId?: string;
+}
+
+const { sideBarActiveItemId } = Astro.props;
+---
+
+<div class="drawer-side z-40">
+  <label for="my-drawer" class="drawer-overlay"></label>
+  <aside class="px-2 pt-2 h-auto min-h-full w-[19rem] bg-base-200 text-base-content flex flex-col">
+    <div class="w-fit mx-auto mt-5 mb-6">
+      <a href="/">
+        <div class="avatar transition ease-in-out hover:scale-[102%] block m-auto">
+          <div class="w-[8.5rem] mx-auto">
+            <Image
+              class="mask mask-circle rounded-full p-1 bg-clip-padding bg-gradient-to-r from-[#D60270] via-[#9B4F96] to-[#0038A8]"
+              format="webp"
+              width={300}
+              height={300}
+              src="/images/profile.webp"
+              loading="eager"
+              alt="Jethro Muller"
+            />
+          </div>
+        </div>
+        <p class="text-2xl text-center">Jethro Muller</p>
+      </a>
+    </div>
+    <SideBarMenu sideBarActiveItemId={sideBarActiveItemId} />
+    <SideBarFooter />
+  </aside>
+</div>

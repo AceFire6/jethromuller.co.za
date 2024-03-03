@@ -1,0 +1,51 @@
+---
+import { format, sameYear } from '@formkit/tempo';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  startDate: string;
+  endDate?: string;
+  yearOnly?: boolean;
+  dateFormat?: string;
+}
+
+const {
+  title,
+  subtitle,
+  startDate,
+  endDate,
+  yearOnly = false,
+  dateFormat = 'medium',
+} = Astro.props;
+
+function spanDateFormat(date: string): string {
+  return format({
+    date,
+    format: yearOnly ? 'YYYY' : dateFormat,
+  });
+}
+
+let timeSpan: string;
+if (yearOnly && endDate !== undefined && sameYear(startDate, endDate)) {
+  timeSpan = spanDateFormat(startDate);
+} else {
+  const endDateFormatted = endDate === undefined ? '' : spanDateFormat(endDate);
+  timeSpan = `${spanDateFormat(startDate)} - ${endDateFormatted}`;
+}
+---
+
+<div class="flex">
+  <div class="education__time">
+    <span class="w-4 h-4 bg-primary block rounded-full mt-1"></span>
+    <span class="education__line bg-primary block h-full w-[2px] translate-x-[7px]"></span>
+  </div>
+  <div class="experience__data bd-grid px-5">
+    <h3 class="font-semibold mb-1">{title}</h3>
+    <div class="text-sm text-neutral-300">{timeSpan}</div>
+    {subtitle && <div class="text-sm">{subtitle}</div>}
+    <p class="my-2 text-justify">
+      <slot />
+    </p>
+  </div>
+</div>

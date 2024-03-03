@@ -1,0 +1,51 @@
+---
+import { format, sameDay } from '@formkit/tempo';
+
+interface Props {
+  jobTitle: string;
+  companyName: string;
+  primarySkills: string[];
+  companyLink?: string;
+  startDate: string;
+  endDate?: string;
+}
+
+const { jobTitle, companyName, companyLink, primarySkills, startDate, endDate } = Astro.props;
+
+function spanDateFormat(date: string): string {
+  return format({
+    date,
+    format: 'MMM YYYY',
+  });
+}
+
+const endDateFormatted = endDate === undefined ? '' : spanDateFormat(endDate);
+const timeSpan =
+  endDate && sameDay(startDate, endDate)
+    ? spanDateFormat(startDate)
+    : `${spanDateFormat(startDate)} - ${endDateFormatted}`;
+
+const companyNameFormatted =
+  companyLink === undefined
+    ? companyName
+    : `<a href="${companyLink}" class="link" target="_blank" >${companyName}</a>`;
+---
+
+<div class="flex mt-2 mb-5">
+  <div class="education__time">
+    <span class="w-4 h-4 bg-primary block rounded-full mt-1"></span>
+    <span class="education__line bg-primary block h-full w-[2px] translate-x-[7px]"></span>
+  </div>
+  <div class="experience__data bd-grid px-5">
+    <h3 class="font-semibold text-xl mb-1">
+      {jobTitle} at <span set:html={companyNameFormatted} />
+    </h3>
+    <div class="text-neutral-300 mb-1">{timeSpan}</div>
+    <div>
+      {primarySkills.map((skill) => <span class="badge badge-info mr-1">{skill}</span>)}
+    </div>
+    <p class="my-2 text-justify">
+      <slot />
+    </p>
+  </div>
+</div>

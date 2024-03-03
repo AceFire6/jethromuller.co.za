@@ -1,0 +1,353 @@
+---
+import TimeLineElement from '@components/cv/TimeLine.astro';
+import WorkExperience from '@components/cv/WorkExperience.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { titleCase } from '@lib/title-case';
+
+const experienceYears = new Date().getFullYear() - new Date('2017-01-01').getFullYear();
+const skillset = {
+  basic: ['Go', 'Rust', 'C++', 'Terraform', 'Google Cloud Platform', 'Azure'],
+  intermediate: ['GraphQL', 'Helm', 'Kubernetes', 'PostgreSQL', 'Bash', 'RabbitMQ'],
+  advanced: ['TypeScript', 'JavaScript', 'NodeJS', 'Python', 'Django', 'Redis', 'Github', 'Docker'],
+};
+---
+
+<BaseLayout title="Resume" sideBarActiveItemId="cv">
+  <div class="mb-5">
+    <h1 class="text-3xl w-full font-bold">Profile</h1>
+  </div>
+
+  <div class="mb-10 text-justify">
+    <p>I am a backend developer with {experienceYears} years of experience.</p>
+
+    <p class="mt-4">
+      I started my development career by gaining an Honours degree in Computer Science at The
+      University of Cape Town, after which I had the privilege of working, both in office and
+      remotely, at such companies as Stitch, Flickswitch, and Yola.
+    </p>
+    <p class="mt-4">
+      I have had the opportunity to lead many projects, both working independently, and as the head
+      of a team. Through this experience, I have learned how to deal with large projects using
+      iterative development techniques, in order to keep the project progressing while delivering
+      usable features and getting user feedback. I have deployed to dedicated servers, cloud
+      environments, and large Kubernetes clusters.
+    </p>
+  </div>
+
+  <div>
+    <h2 class="mb-3 text-3xl w-full font-bold">Education</h2>
+
+    <div class="time-line-container grid gap-4 mb-10">
+      <TimeLineElement
+        title="Bachelor's of Science Honours in Computer Science"
+        subtitle="University of Cape Town, Cape Town, South Africa"
+        startDate="2016-01-01"
+        endDate="2016-12-31"
+        yearOnly={true}
+      />
+      <TimeLineElement
+        title="Bachelor's of Science in Computer Science and Games Development"
+        subtitle="University of Cape Town, Cape Town, South Africa"
+        startDate="2013-01-01"
+        endDate="2015-12-31"
+        yearOnly={true}
+      />
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="mb-2 text-3xl w-full font-bold">Work Experience</h2>
+
+    <div class="time-line-container mb-10">
+      <WorkExperience
+        jobTitle="Senior Fullstack Software Developer (IC4)"
+        companyName="Stitch Money (Pty)"
+        companyLink="https://stitch.money"
+        primarySkills={[
+          'TypeScript',
+          'NodeJS',
+          'Redis',
+          'PostgreSQL',
+          'Github',
+          'Docker',
+          'Helm',
+          'Kubernetes',
+          'Azure',
+        ]}
+        startDate="2022-09-01"
+      >
+        <p>As a member of the platform team I am responsible for:</p>
+        <ul class="list-disc pl-5">
+          <li>Planning and building bespoke tooling for Stitch developers</li>
+          <li>Planning, development, and implementation of developer tooling and tool adoption</li>
+          <li>Standardising of our tools and services</li>
+          <li>Building CI/CD workflows in Github</li>
+          <li>Converting our existing Dockerfiles to multi-stage builds</li>
+          <li>
+            Implementing standardised logging, metrics, and events logging packages and their usage
+            in services
+          </li>
+          <li>Rebuilding our core client configuration service and creating the new data mode</li>
+        </ul>
+      </WorkExperience>
+      <WorkExperience
+        jobTitle="Senior Fullstack Software Developer (IC3)"
+        companyName="Stitch Money (Pty)"
+        companyLink="https://stitch.money"
+        primarySkills={['TypeScript', 'NodeJS', 'Redis', 'PostgreSQL', 'Azure']}
+        startDate="2021-10-01"
+        endDate="2022-09-01"
+      >
+        I worked on the payments team building out new bank features using reverse engineering. I
+        also worked on the disbursement and refunds product which provided an API for our business
+        customers to use to send money to multiple locations more easily.
+      </WorkExperience>
+
+      <WorkExperience
+        jobTitle="Part-time Software Development Consultant"
+        companyName="BraveOrbit"
+        companyLink="https://braveorbit.io"
+        primarySkills={['Python', 'Django', 'PostgreSQL', 'SQLAlchemy']}
+        startDate="2020-03-01"
+        endDate="2021-04-01"
+      >
+        <p>
+          I did Python development for companies as a consultant. I built custom solutions based on
+          the business requirements of each business in collaboration with their teams.
+        </p>
+        <p>
+          I built a proof of concept management backend for a healthcare startup in Django and a
+          custom RBAC implementation in SQLAlchemy on PostgreSQL.
+        </p>
+      </WorkExperience>
+
+      <WorkExperience
+        jobTitle="Guest Lecturer"
+        companyName="University of Cape Town"
+        companyLink="https://uct.ac.za/"
+        primarySkills={['Public Speaking', 'Course Content Development', 'Android', 'Java']}
+        startDate="2019-07-01"
+        endDate="2019-07-01"
+      >
+        <p>
+          I lectured CS2002S: Mobile Development and Design and reworked the lecture slides used to
+          teach the Android Development module. I introduced the students to Android development and
+          helped administer their first practical tutorial building an Android application.
+        </p>
+      </WorkExperience>
+      <WorkExperience
+        jobTitle="Fullstack Software Developer"
+        companyName="Flickswitch"
+        companyLink="https://flickswitch.co.za/"
+        primarySkills={[
+          'Python',
+          'Django',
+          'Redis',
+          'PostgreSQL',
+          'Github',
+          'Docker',
+          'GCP',
+          'Terraform',
+        ]}
+        startDate="2017-01-01"
+        endDate="2021-08-01"
+      >
+        <p>
+          I worked on the core platform features including key sections of the task processing
+          logic, double-ledger accounting system, custom user controlled permissions and RBAC
+          system, support portal and functionality, a transparent Redis-backed caching system that
+          wrapped our Django ORM queries, and pipelines for large scale data migrations between
+          different cloud providers and databases (MySQL to PostgreSQL).
+        </p>
+        <p class="pt-3">I was also responsible for:</p>
+        <ul class="list-disc pl-5">
+          <li>Implementing our CI/CD workflows in CircleCI and Github</li>
+          <li>
+            Automation of our deployment process using Slack integrations and Github workflows
+          </li>
+          <li>
+            Building our Docker images and implementing remote caching for CI/CD anc deployment
+            flows
+          </li>
+        </ul>
+      </WorkExperience>
+
+      <WorkExperience
+        jobTitle="Software Development Intern"
+        companyName="Yola"
+        companyLink="https://yola.com"
+        primarySkills={['Python', 'Django']}
+        startDate="2015-12-01"
+        endDate="2016-02-01"
+      >
+        <p>
+          Worked on <a href="https://github.com/yola/pycloudflare" class="link">pycloudflare</a> and
+          used it to build a web interface to manage Cloudflare DNS records through a web interface.
+        </p>
+      </WorkExperience>
+
+      <WorkExperience
+        jobTitle="Software Development Intern"
+        companyName="Yola"
+        companyLink="https://yola.com"
+        primarySkills={['Python', 'Django']}
+        startDate="2014-11-01"
+        endDate="2015-02-01"
+      >
+        <p>
+          I developed a support analysis dashboard that provided filterable metrics and analytics on
+          support performance. I also developed a web interface for an existing business process
+          previously done in Excel allow for fast and efficient data entry and manipulation with
+          audit logging and email notifications.
+        </p>
+      </WorkExperience>
+
+      <WorkExperience
+        jobTitle="Software Development Intern"
+        companyName="Yola"
+        companyLink="https://yola.com"
+        primarySkills={['Python', 'Django']}
+        startDate="2014-06-01"
+        endDate="2014-07-01"
+      >
+        <p>
+          I added markdown support to an internal support tool and developed <a
+            href="https://github.com/yola/doorservice"
+            class="link">doorservice</a
+          > a web application using Flask that ran on a RaspberryPi as well as a thin mobile wrapper
+          using PhoneGap.
+        </p>
+      </WorkExperience>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="mb-3 text-3xl w-full font-bold">Achievements</h2>
+
+    <div class="time-line-container grid gap-4 mb-10">
+      <TimeLineElement
+        title="Wrote for the Offerzen Souce Initiative"
+        startDate="2022-01-01"
+        endDate="2023-01-01"
+        yearOnly={true}
+      >
+        <ul class="list-disc mx-6">
+          <li>
+            <a
+              href="https://www.offerzen.com/blog/how-stitch-automates-code-quality-checks-using-github-actions"
+              class="link"
+              target="_blank">How Stitch Automates Code Quality Checks using GitHub Actions</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.offerzen.com/blog/how-i-tested-asyncio-code-in-phx-events"
+              class="link"
+              target="_blank">How I Tested Asyncio Code in PHX Events</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.offerzen.com/blog/communicating-with-junior-developers"
+              class="link"
+              target="_blank">How to Communicate Considerately with Junior Developers</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.offerzen.com/blog/automating-to-improve-team-workflow"
+              class="link"
+              target="_blank"
+              >Automating the pain away: Solving common issues to improve team workflow</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.offerzen.com/blog/how-hypothesis-and-vcr-changed-the-way-i-do-testing-in-python"
+              class="link"
+              target="_blank">How Hypothesis and VCR Changed the Way I Do Testing in Python</a
+            >
+          </li>
+        </ul>
+      </TimeLineElement>
+
+      <TimeLineElement
+        title="Wrote for Stitch"
+        startDate="2022-01-01"
+        endDate="2022-01-01"
+        yearOnly={true}
+      >
+        <ul class="list-disc mx-6">
+          <li>
+            <a
+              href="https://stitch.money/blog/how-to-integrate-stitch-using-graphql"
+              class="link"
+              target="_blank">How to integrate with Stitch using GraphQL</a
+            >
+          </li>
+        </ul>
+      </TimeLineElement>
+
+      <TimeLineElement
+        title="Invited to speak at the combined Cape Town & Gauteng Python User Group Meetup"
+        startDate="2020-01-01"
+        endDate="2020-01-01"
+        yearOnly={true}
+      >
+        <p>I spoke on Python testing using Hypothesis and Pytest-VCR</p>
+      </TimeLineElement>
+
+      <TimeLineElement
+        title="Invited to speak at the Cape Town Python User Group Meetup of Meetups"
+        startDate="2020-01-01"
+        endDate="2020-01-01"
+        yearOnly={true}
+      >
+        <p>I spoke on advanced querying and debugging techniques using the Django ORM.</p>
+      </TimeLineElement>
+
+      <TimeLineElement
+        title="Wrote for the Offerzen Source Initiative"
+        startDate="2019-01-01"
+        endDate="2019-01-01"
+        yearOnly={true}
+      >
+        <ul class="list-disc mx-6">
+          <li>
+            <a
+              href="https://www.offerzen.com/blog/how-figuring-out-the-django-orm-powered-up-my-workflow"
+              class="link"
+              target="_blank">How Figuring Out the Django ORM Powered Up My Workflow</a
+            >
+          </li>
+        </ul>
+      </TimeLineElement>
+
+      <TimeLineElement
+        title="University of Cape Town Council Honours Merit Scholarship"
+        startDate="2016-01-01"
+        endDate="2016-01-01"
+        yearOnly={true}
+      />
+    </div>
+
+    <div>
+      <h2 class="mb-2 text-3xl w-full font-bold">Skills</h2>
+
+      <div class="md:flex">
+        {
+          Object.entries(skillset).map(([level, skills]) => (
+            <div class="flex-none md:flex-1">
+              <h3 class="font-bold text-xl mt-3">{titleCase(level)} Knowledge</h3>
+              <ul class="list-disc xl:columns-2 mx-6">
+                {skills.map((skill) => (
+                  <li>{skill}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</BaseLayout>
