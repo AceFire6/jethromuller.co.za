@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "plop": "NODE_OPTIONS='--import tsx' plop --plopfile ./plop/plopfiile.ts --dest ./",
     "new-blog-post": "NODE_OPTIONS='--import tsx' plop --plopfile ./plop/blog-post/blog-post-generator.ts --dest ./",
-    "bundle-release": "pnpm run build && tar -cvf website.zip -C ./dist/ .",
+    "bundle-release": "pnpm run build && tar -czvf website.tar.gz -C ./dist/ .",
     "preview": "astro preview",
     "start": "astro dev"
   },
