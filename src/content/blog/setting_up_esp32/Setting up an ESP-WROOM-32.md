@@ -1,6 +1,7 @@
 ---
 title: 'Setting up an ESP-WROOM-32'
-description: 'How to set up an ESP32.'
+description: 'How to set up, flash, and run code on an ESP-WROOM-32.'
+listImage: './esp-wroom-32.webp'
 publishedDate: 2024-06-22
 tags: [ 'ESP32', 'electronics' ]
 ---
