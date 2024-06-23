@@ -28,12 +28,12 @@ the future.
 
 There are a few things you need to set up before you can actually get started. You need drivers, a
 development environment (unless you are using
-the [esptool utility](https://github.com/espressif/esptool) directly), and **very importantly** a
+the [esptool utility](https://github.com/espressif/esptool) directly), and **importantly** a
 USB cable that supports data connections.
 
 ### Drivers
 
-You will most likely need to install drivers for the UART chip that exists on your ESP32 board. In
+You need to install drivers for the UART chip that exists on your ESP32 board. In
 my case it's a CP2102 USB to UART Bridge Virtual COM Port (VCP).
 
 You should be able to find the name on the little microcontroller near the USB port on your ESP32
@@ -74,7 +74,7 @@ The two IDE environments I've tested are [VSCodium](https://vscodium.com/) with
 the [ESP-IDF extension](https://marketplace.visualstudio.com/items?itemName=espressif.esp-idf-extension)
 and the [Arduino IDE](https://www.arduino.cc/en/software) with
 the [Arduino Core for ESP32](https://github.com/espressif/arduino-esp32) setup. There is also a
-plugin for Jetbrains CLion IDE - the instructions for setting that up can be found in
+plugin for JetBrains CLion IDE - the instructions for setting that up can be found in
 the [Espressif Docs](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/third-party-tools/clion.html).
 
 Those all have their own dedicated instructions, so I won't replicate those here. Follow their
@@ -97,7 +97,7 @@ There is one more thing to know when pushing code to the ESP32 (at least for the
 have).
 
 If you encounter this error message you should follow the instructions in the
-espressif [ESP32 documentation for manually putting your ESP32 into Firmware Download mode](https://docs.espressif.com/projects/esptool/en/latest/esp32/advanced-topics/boot-mode-selection.html#manual-bootloader).
+Espressif [ESP32 documentation for manually putting your ESP32 into Firmware Download mode](https://docs.espressif.com/projects/esptool/en/latest/esp32/advanced-topics/boot-mode-selection.html#manual-bootloader).
 
 > [!ERROR] Error Message
 > Failed to connect to ESP32: Wrong boot mode detected (0x13)! The chip needs to be in download
@@ -134,7 +134,7 @@ Once that's loaded ensure your ESP32 is still selected from the dropdown and cli
 
 ![](click-upload.png)
 
-If all has gone well you should see the output like the output I got in the image above. If you get
+If all has gone well you should see the output like the output I got in the previous image. If you get
 any errors searching the error codes has helped me find solutions for most of my problems so far.
 You will notice, that there is no output from the ESP32. To see that in this case, we need to
 monitor the serial output using the `Serial Monitor` tool at `Tools` -> `Serial Monitor`.
