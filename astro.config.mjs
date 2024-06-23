@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import { default as remarkGithubBetaBlockquoteAdmonitions } from 'remark-github-beta-blockquote-admonitions';
+import rehypeClassNames from 'rehype-class-names';
+import remarkGithubBetaBlockquoteAdmonitions from 'remark-github-beta-blockquote-admonitions';
 
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
@@ -54,5 +55,13 @@ export default defineConfig({
     integrations: [mdx(), sitemap(), tailwind()],
     markdown: {
         remarkPlugins: [[remarkGithubBetaBlockquoteAdmonitions, remarkGithubBetaBlockquoteConfig]],
+        rehypePlugins: [
+            [
+                rehypeClassNames,
+                {
+                    a: 'link',
+                },
+            ],
+        ],
     },
 });
