@@ -20,7 +20,7 @@ I got to skip all the hard parts of making the disparate components and ideas fi
 really quickly too.
 
 I spent most of the first day setting up the project getting everything the way I like it with
-eslint and prettier setup to make sure I keep my site clean from the start. I also added stricter
+ESLint and prettier setup to make sure I keep my site clean from the start. I also added stricter
 type rules to make sure I could statically check I wasn't doing anything silly with the internal
 components.
 
