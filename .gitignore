@@ -23,15 +23,15 @@ pnpm-debug.log*
 # We want to ignore our StylesPath *except* for our local
 # `vocabularies/Base` directory.
 
-styles/*
-!styles/config/
+.vale-styles/*
+!.vale-styles/config/
 
-!styles/overrides/
-styles/overrides/*
+!.vale-styles/overrides/
+.vale-styles/overrides/*
 !styles/overrides/*.yml
 
-styles/config/*
-!styles/config/vocabularies/
+.vale-styles/config/*
+!.vale-styles/config/vocabularies/
 
-styles/config/vocabularies/*
-!styles/config/vocabularies/blog
+.vale-styles/config/vocabularies/*
+!.vale-styles/config/vocabularies/blog
