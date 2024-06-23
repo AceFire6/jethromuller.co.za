@@ -1,0 +1,6 @@
+extends: spelling
+message: "'%s' is a typo!"
+dicpath: ./styles/overrides/dictionaries/en/
+level: error
+dictionaries:
+  - en_GB

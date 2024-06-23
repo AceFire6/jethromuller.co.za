@@ -7,7 +7,7 @@ tags: [ 'ESP32', 'electronics' ]
 ---
 
 I've been more and more interested in trying out electronics projects since I found out about the
-ESP32. It is a low-cost and low-power system on a chip with Wi-Fi and Bluetooth.
+ESP32. It's a low-cost and low-power system on a chip with Wi-Fi and Bluetooth.
 
 It costs around R250 (~13 USD) on local sites for a fully featured ESP32 development board which is
 a great price for something that can do so much out of the box.
@@ -28,7 +28,7 @@ the future.
 
 There are a few things you need to set up before you can actually get started. You need drivers, a
 development environment (unless you are using
-the [esptool utility](https://github.com/espressif/esptool) directly), and **importantly** a
+the [`esptool` utility](https://github.com/espressif/esptool) directly), and **importantly** a
 USB cable that supports data connections.
 
 ### Drivers
@@ -41,16 +41,18 @@ board. In the picture below you can see it says `S1LABs CP2102`.
 
 > [!WARNING] Warning
 > Apparently it being `S1LABs` instead of `SILABs` indicates that it's a counterfeit CP2102 which
-> could cause issues. I have not confirmed this myself.
+> could cause issues. I haven't confirmed this myself.
+> <!-- vale off -->
 > "...a counterfeit CP2102 that was leaking 5 volts to the ESP32 (4.05v to the En pin, and 5v to
 > Rx). Easy to check for this if you have otherwise inexplicable wifi issues: just measure the
 > voltages at En and Rx on the dev board relative to Gnd. They should both be
 > 3.3v..." - [/u/brandyn in r/esp32](https://www.reddit.com/r/esp32/comments/17vmyi8/comment/k9bm24t/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
+> <!-- vale on -->
 
 ![CP2102](cp2102.webp "CP2102 UART Bridge Virtual COM Port")
 
-You will need to download the drivers for your specific USB VCP. The drivers for CP210X VCPs can be
-found on
+You will need to download the drivers for your specific USB VCP. The drivers for CP210X VCP boards
+can be found on
 the [Silicon Labs download page](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads).
 
 Download the drivers appropriate for your operating system and install them. In my case I installed
@@ -99,9 +101,12 @@ have).
 If you encounter this error message you should follow the instructions in the
 Espressif [ESP32 documentation for manually putting your ESP32 into Firmware Download mode](https://docs.espressif.com/projects/esptool/en/latest/esp32/advanced-topics/boot-mode-selection.html#manual-bootloader).
 
+
+<!-- vale off -->
 > [!ERROR] Error Message
 > Failed to connect to ESP32: Wrong boot mode detected (0x13)! The chip needs to be in download
 > mode.
+<!-- vale on -->
 
 In practice what you need to do if you are encountering this error is to:
 
@@ -124,7 +129,7 @@ Now that we've covered how to correctly enter download mode, so we can upload co
 can try out an example. For this, I'm using the provided `Get Mac Address` example in the Arduino
 IDE.
 
-First, ensure you have selected the ESP32 Dev Module from the dropdown to get access to the ESP32
+First, ensure you have selected the `ESP32 Dev Module` from the dropdown to get access to the ESP32
 examples. Select the example
 from `File` -> `Examples` -> `ESP32` -> `MacAddress` -> `GetMacAddress`.
 

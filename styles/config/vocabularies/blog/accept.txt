@@ -6,3 +6,4 @@ CLion
 VSCode
 Espressif
 ESLint
+VSCodium
