@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@eslint/js": "8.56.0",
-    "@ianvs/prettier-plugin-sort-imports": "4.1.1",
+    "@ianvs/prettier-plugin-sort-imports": "4.3.1",
     "@tailwindcss/typography": "0.5.13",
     "@types/eslint": "8.56.3",
     "@types/node": "20.14.8",
