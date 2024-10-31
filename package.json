@@ -42,7 +42,7 @@
     "eslint-plugin-diff": "2.0.3",
     "eslint-plugin-import": "npm:eslint-plugin-i@2.29.1",
     "eslint-plugin-jsx-a11y": "6.8.0",
-    "eslint-plugin-promise": "6.1.1",
+    "eslint-plugin-promise": "7.1.0",
     "eslint-plugin-unicorn": "51.0.1",
     "eslint-plugin-you-dont-need-lodash-underscore": "6.13.0",
     "husky": "9.0.11",
