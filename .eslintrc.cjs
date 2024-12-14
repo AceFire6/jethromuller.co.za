@@ -224,7 +224,6 @@ module.exports = {
         'unicorn/prefer-module': 'off',
         // Unicorn rules that go too hard
         'unicorn/no-null': 'off',
-        // See: https://stitch-money.slack.com/archives/C05A4L6VBN0/p1686237220348959
         'unicorn/prefer-top-level-await': 'off',
         // This rule is good in theory, but it contradicts eslint's consistent-returns
         // and typescripts own value return checks
