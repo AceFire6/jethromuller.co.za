@@ -32,7 +32,7 @@ const skillset = {
     <p class="mt-4">
       I started my development career by gaining an Honours degree in Computer Science at The
       University of Cape Town, after which I had the privilege of working, both in office and
-      remotely, at such companies as Stitch, Flickswitch, and Yola.
+      remotely, at companies such as xneelo, Stitch, Flickswitch, and Yola.
     </p>
     <p class="mt-4">
       I have had the opportunity to lead many projects, both working independently, and as the head
@@ -68,6 +68,86 @@ const skillset = {
     <h2 class="mb-2 text-3xl w-full font-bold">Work Experience</h2>
 
     <div class="time-line-container mb-10">
+      <WorkExperience
+        jobTitle="Senior Software Developer - Cloud Product"
+        companyName="xneelo"
+        companyLink="https://xneelo.co.za/"
+        primarySkills={[
+          'Go',
+          'PostgreSQL',
+          'Gitlab CI',
+          'Kafka',
+          'React',
+          'Openstack',
+          'Kubernetes',
+          'Helm',
+        ]}
+        startDate="2025-01-13"
+      >
+        <p>
+          I work on the Cloud Product team, Stratus. We work in Go building out services and tooling
+          for the xneelo Cloud product.
+        </p>
+      </WorkExperience>
+
+      <WorkExperience
+        jobTitle="Software Development Consulting - Python WhatsApp Bot"
+        primarySkills={['Python', 'Flask', 'PostgreSQL', 'Retool', 'WhatsApp']}
+        startDate="2024-12-01"
+        endDate="2024-12-01"
+      >
+        <p>
+          I assisted a company that needed help finishing a WhatsApp bot for the service industry.
+          The timeline was short as I was brought on to help finish the project two weeks from
+          launch.
+        </p>
+        <ul class="list-disc pl-5">
+          <li>
+            Workflow creation for the WhatsApp bot including data retrieval and asynchronous waiting
+            for third-party webhooks.
+          </li>
+          <li>
+            Building Python API endpoints for the WhatsApp workflow and integrations with
+            third-party delivery APIs.
+          </li>
+          <li>Maintained Retool dashboards and workflows.</li>
+        </ul>
+      </WorkExperience>
+
+      <WorkExperience
+        jobTitle="Software Development Consulting - AI Image Segmentation Proof of Concept"
+        primarySkills={[
+          'Python',
+          'OpenCV',
+          'Detectron2',
+          'Go',
+          'HTMX',
+          'Templ',
+          'NATS',
+          'PostgreSQL',
+          'Github',
+          'Docker',
+        ]}
+        startDate="2024-06-01"
+        endDate="2024-08-31"
+      >
+        <p>
+          I built a proof of concept AI image segmentation implementation for a company exploring
+          replacing a third-party dependency. The goal was to develop a system to remove the
+          backgrounds from specific images in busy environments and then add in virtual backgrounds.
+        </p>
+        <ul class="list-disc pl-5">
+          <li>
+            Planning and building a tool for pre- and post-processed images with notes. This was
+            done in Go using HTMX and templ.
+          </li>
+          <li>
+            Building an experimental pipeline for model transfer learning initially with Mask-RCNN
+            and then PointRend.
+          </li>
+        </ul>
+      </WorkExperience>
+
       <WorkExperience
         jobTitle="Senior Fullstack Software Developer (IC4)"
         companyName="Stitch Money (Pty)"
