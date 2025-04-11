@@ -3,7 +3,7 @@ import { format, sameDay } from '@formkit/tempo';
 
 interface Props {
   jobTitle: string;
-  companyName: string;
+  companyName?: string;
   primarySkills: string[];
   companyLink?: string;
   startDate: string;
@@ -38,7 +38,16 @@ const companyNameFormatted =
   </div>
   <div class="experience__data bd-grid px-5">
     <h3 class="font-semibold text-xl mb-1">
-      {jobTitle} at <span set:html={companyNameFormatted} />
+      {jobTitle}
+      {
+        companyName != null ? (
+          <span>
+            at <span set:html={companyNameFormatted} />
+          </span>
+        ) : (
+          ''
+        )
+      }
     </h3>
     <div class="text-base-content mb-1">{timeSpan}</div>
     <div>
